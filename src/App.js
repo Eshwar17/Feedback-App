@@ -6,11 +6,15 @@ import './index.css';
 
 function App() {
    const [feedback, setFeedback] = useState(FeedbackData);
+   const deleteFunction = (id) => {
+    if(window.confirm('Are you sure you want to delete'))
+       setFeedback(feedback.filter((feedback) => feedback.id!== id));
+   }
     return (
         <>
-            <Header text='Prop' />
+            <Header text='Feedback UI' />
             <div className="container">
-                <FeedbackList feedback={feedback}/>
+                <FeedbackList feedback={feedback} handleDelete={deleteFunction}/>
             </div>
         </>
     );
